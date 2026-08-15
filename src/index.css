@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+/* ─── 1. TIPOGRAFIA ───────────────────────────────────────────────
+   Archivo variável (Omnibus-Type): eixos wght 100..900 e wdth 62..125.
+   O eixo de largura é o que aproxima o lettering esportivo condensado do
+   material oficial sem precisar de uma segunda família. */
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("./assets/fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("./assets/fonts/archivo-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ─── 2. TOKENS ───────────────────────────────────────────────────
+   Todas as tintas foram amostradas pixel a pixel de assets/BANNER-INICIAL.png.
+   Os escuros são o trecho fundo da coluna d'água do banner; os claros são as
+   cores chapadas do lettering e da faixa de ícones. */
+
+@theme {
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  /* A água do Tocantins, de baixo para cima */
+  --color-fundo: #03202a; /* verde-escuro do rodapé do banner */
+  --color-noite: #041729; /* azul-noite, fim da página */
+  --color-mar: #063a5e; /* meio da coluna, elevação */
+  --color-mar-alto: #0a4b6e;
+  --color-linha: #12506b;
+
+  /* Tintas chapadas da marca */
+  --color-amarelo: #ffd600; /* "VOTE" — ação primária */
+  --color-laranja: #ff601a; /* o traço do "LU✕EMBURGO" */
+  --color-laranja-fundo: #ce4409;
+  --color-verde: #40b557; /* selo "SENADOR" */
+  --color-ciano: #007ea9; /* água iluminada */
+  --color-azul: #1170aa;
+
+  --color-branco: #ffffff;
+
+  --radius-suave: 16px;
+  --radius-placa: 28px;
+  --radius-campo: 44px;
+
+  --ease-jogo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  /* Cor de luz da seção. Halo, traço, rótulo e foco leem daqui. */
+  --luz: var(--color-ciano);
+}
+
+/* ─── 3. BASE ─────────────────────────────────────────────────────── */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-fundo);
+    color: var(--color-branco);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-amarelo);
+    outline-offset: 4px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-amarelo);
+    color: var(--color-fundo);
+  }
+}
+
+/* ─── 4. TIPOGRAFIA APLICADA ───────────────────────────────────────
+   Um só ajuste por papel. O condensado (wdth) faz o trabalho que uma
+   segunda família faria. */
+
+@utility display {
+  font-weight: 800;
+  font-stretch: 84%;
+  letter-spacing: -0.012em;
+  line-height: 0.93;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+/* O número da camisa: inclinação de livery esportiva, aplicada só aqui. */
+@utility numeral {
+  font-weight: 800;
+  font-stretch: 108%;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  font-variant-numeric: lining-nums tabular-nums;
+  transform: skewX(-8deg);
+}
+
+@utility rotulo {
+  font-weight: 700;
+  font-stretch: 88%;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+
+@utility fechamento {
+  font-weight: 700;
+  font-stretch: 96%;
+  letter-spacing: -0.018em;
+  line-height: 1.16;
+  text-wrap: balance;
+}
+
+@utility corpo {
+  font-weight: 400;
+  font-size: clamp(1.0rem, 0.96rem + 0.2vw, 1.12rem);
+  line-height: 1.72;
+  max-width: 62ch;
+  text-wrap: pretty;
+  color: color-mix(in srgb, var(--color-branco) 78%, transparent);
+}
+
+/* ─── 5. LUZ E MATÉRIA ─────────────────────────────────────────────
+   A cor entra como luz sobre a água, nunca como preenchimento chapado —
+   é o que impede a página de virar "degradê + grade de cards". */
+
+@utility halo {
+  background: radial-gradient(
+    58% 52% at var(--halo-x, 50%) var(--halo-y, 42%),
+    color-mix(in srgb, var(--luz) 40%, transparent) 0%,
+    color-mix(in srgb, var(--luz) 13%, transparent) 40%,
+    transparent 72%
+  );
+}
+
+@utility superficie {
+  background: color-mix(in srgb, var(--color-branco) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-branco) 13%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 1px 0 0 color-mix(in srgb, var(--color-branco) 10%, transparent) inset,
+    0 20px 48px -26px rgb(0 0 0 / 0.75);
+}
+
+/* A coluna d'água: o degradê contínuo que sustenta a página inteira. */
+@utility agua {
+  background-image: linear-gradient(
+    180deg,
+    #05293a 0%,
+    #063a52 14%,
+    #06405f 42%,
+    #05315c 72%,
+    var(--color-noite) 100%
+  );
+}
+
+/* A faixa de cores do material impresso, reconstruída em CSS.
+   Cinco tintas chapadas, sem ícone — citação da peça, não cópia dela. */
+@utility faixa-cores {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-verde) 0 20%,
+    var(--color-azul) 20% 40%,
+    var(--color-laranja-fundo) 40% 60%,
+    var(--color-amarelo) 60% 80%,
+    var(--color-ciano) 80% 100%
+  );
+}
+
+/* ─── 6. MOVIMENTO EM LAÇO ─────────────────────────────────────────
+   As entradas ficam no motion (JS). Aqui só o que precisa repetir. */
+
+@keyframes respira {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+.respira {
+  animation: respira 8s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .respira {
+    animation: none;
+    opacity: 0.85;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
