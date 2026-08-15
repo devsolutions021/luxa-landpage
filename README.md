@@ -48,18 +48,20 @@ Cargo, número, estado e a chapa completa (Jair Júnior e Daniel Walison) vieram
 
 ## Pendências antes de publicar
 
-**Dados de propaganda eleitoral** — exigidos pela Justiça Eleitoral e **não informados** pela
-campanha. Estão marcados como `[PENDENTE: …]` em `propaganda` no
+**Dados de propaganda eleitoral**, exigidos pela Justiça Eleitoral. Razão social e CNPJ já vieram
+da consulta ao registro do comitê enviada pelo cliente:
+
+- ✅ **Razão social** — Eleição 2026 Vanderlei Luxemburgo da Silva Senador
+- ✅ **CNPJ** — 68.499.810/0001-78 (aberto em 10/08/2026)
+- ⛔ **Partido / federação** — não informado
+- ⛔ **Endereço do comitê** — não informado
+
+Os dois que faltam estão marcados como `[PENDENTE: …]` em `propaganda` no
 [`src/data/site.ts`](src/data/site.ts) e aparecem no rodapé com um aviso amarelo visível, de
-propósito: nenhum deles foi preenchido por suposição, e o aviso some sozinho quando
-`propaganda.pendente` virar `false`.
+propósito: nada foi preenchido por suposição. O aviso some sozinho quando `propaganda.pendente`
+virar `false`.
 
-- razão social do comitê financeiro
-- partido / federação
-- CNPJ de campanha
-- endereço do comitê
-
-Sem esses dados a página **não deve ir ao ar**.
+Sem esses dois a página **não deve ir ao ar**.
 
 ## Imagens
 

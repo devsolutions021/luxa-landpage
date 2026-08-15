@@ -71,9 +71,9 @@ export function Rodape() {
 
           {propaganda.pendente && (
             <p className="mt-3 max-w-[62ch] rounded-[var(--radius-suave)] border border-amarelo/35 bg-amarelo/8 px-4 py-3 text-[0.86rem] leading-relaxed text-amarelo">
-              Dados de propaganda eleitoral ainda não informados pela campanha.
-              Substituir em <code className="font-mono">src/data/site.ts</code>{" "}
-              antes de publicar — nada aqui foi preenchido por suposição.
+              Faltam o partido/federação e o endereço do comitê. Preencher em{" "}
+              <code className="font-mono">src/data/site.ts</code> antes de
+              publicar — nada aqui foi preenchido por suposição.
             </p>
           )}
 

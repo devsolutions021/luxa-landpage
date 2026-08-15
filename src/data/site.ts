@@ -30,15 +30,17 @@ export const contato = {
 } as const;
 
 // ─── 2. PROPAGANDA ELEITORAL ─────────────────────────────────────
-// Dizeres exigidos pela Justiça Eleitoral. O cliente ainda não informou
-// esses dados — ficam como pendência explícita, marcada na interface.
-// Ver a lista de substituição no README.
+// Dizeres exigidos pela Justiça Eleitoral. Razão social e CNPJ vieram da
+// consulta ao registro do comitê (CNPJ aberto em 10/08/2026, natureza
+// jurídica "Candidato a Cargo Político Eletivo"), enviada pelo cliente.
+// Partido e endereço ainda não foram informados — seguem marcados, nunca
+// preenchidos por suposição. Ver a lista de substituição no README.
 
 export const propaganda = {
   pendente: true,
-  comite: "[PENDENTE: razão social do comitê financeiro]",
+  comite: "Eleição 2026 Vanderlei Luxemburgo da Silva Senador",
+  cnpj: "68.499.810/0001-78",
   partido: "[PENDENTE: partido / federação]",
-  cnpj: "[PENDENTE: CNPJ de campanha]",
   endereco: "[PENDENTE: endereço do comitê]",
 } as const;
 
