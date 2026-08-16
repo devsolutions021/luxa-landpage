@@ -59,6 +59,15 @@ export function Rodape() {
               </span>
             </a>
 
+            <p className="rotulo mt-10 text-branco/60">Contato</p>
+
+            <a
+              href={`mailto:${contato.email}`}
+              className="mt-3 inline-block text-[1.02rem] text-branco/85 underline decoration-amarelo/45 decoration-1 underline-offset-[6px] transition-colors duration-300 hover:text-amarelo hover:decoration-amarelo"
+            >
+              {contato.email}
+            </a>
+
             <p className="corpo mt-6 text-[0.95rem]">
               {candidato.estado} · Campanha ao {candidato.cargo}
             </p>
@@ -69,19 +78,15 @@ export function Rodape() {
         <div className="mt-16 border-t border-branco/10 pt-8">
           <p className="rotulo text-branco/60">Propaganda eleitoral</p>
 
-          {propaganda.pendente && (
-            <p className="mt-3 max-w-[62ch] rounded-[var(--radius-suave)] border border-amarelo/35 bg-amarelo/8 px-4 py-3 text-[0.86rem] leading-relaxed text-amarelo">
-              Faltam o partido/federação e o endereço do comitê. Preencher em{" "}
-              <code className="font-mono">src/data/site.ts</code> antes de
-              publicar — nada aqui foi preenchido por suposição.
-            </p>
-          )}
-
           <address className="mt-4 max-w-[62ch] text-[0.88rem] leading-[1.75] text-branco/60 not-italic">
-            <span className="block">{propaganda.comite}</span>
-            <span className="block">{propaganda.partido}</span>
+            <span className="block text-branco/78">{propaganda.comite}</span>
+            {propaganda.partido && (
+              <span className="block">{propaganda.partido}</span>
+            )}
             <span className="block">CNPJ {propaganda.cnpj}</span>
-            <span className="block">{propaganda.endereco}</span>
+            {propaganda.endereco && (
+              <span className="block">{propaganda.endereco}</span>
+            )}
           </address>
         </div>
 

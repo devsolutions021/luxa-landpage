@@ -26,8 +26,10 @@ export function Sobre() {
 
         {/* Retrato e trajetória lado a lado. O retrato foi recortado da peça
             oficial, então a água do fundo dele continua a da página. */}
-        <div className="mt-14 grid items-start gap-12 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:gap-16">
-          <figure className="relative mx-auto w-full max-w-[340px] lg:sticky lg:top-16 lg:mx-0 lg:max-w-[400px]">
+        {/* A grade entra já no tablet: em coluna única, num viewport largo, o
+            retrato ficaria centralizado e solto no meio do vazio. */}
+        <div className="mt-14 grid items-start gap-12 md:grid-cols-[minmax(0,0.58fr)_minmax(0,1fr)] lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:gap-16">
+          <figure className="relative mx-auto w-full max-w-[340px] md:sticky md:top-16 md:mx-0 md:max-w-none lg:max-w-[400px]">
             {/* O clip fica no invólucro da imagem: se ficasse na figure, ele
                 cortaria o selo do número, que fica pendurado para fora. */}
             <m.div
@@ -40,7 +42,7 @@ export function Sobre() {
               <img
                 src="/img/retrato.webp"
                 srcSet="/img/retrato-380.webp 380w, /img/retrato.webp 506w"
-                sizes="(min-width: 1024px) 400px, min(84vw, 340px)"
+                sizes="(min-width: 1024px) 400px, (min-width: 768px) 34vw, min(84vw, 340px)"
                 width={506}
                 height={778}
                 loading="lazy"

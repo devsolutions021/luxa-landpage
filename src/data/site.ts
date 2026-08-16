@@ -24,25 +24,34 @@ export const suplentes = [
   { ordem: "Segundo suplente", nome: "Daniel Walison" },
 ] as const;
 
+// O domínio canônico (https://vanderleiluxemburgo.com.br) mora no index.html,
+// em canonical/og:url — é HTML estático, não lê daqui. Não duplicar: duas
+// fontes para a mesma URL é uma que sai de sincronia.
 export const contato = {
   instagram: "https://www.instagram.com/timedoluxemburgo/",
   perfil: "@timedoluxemburgo",
+  email: "contato@vanderleiluxemburgo.com.br",
 } as const;
 
 // ─── 2. PROPAGANDA ELEITORAL ─────────────────────────────────────
-// Dizeres exigidos pela Justiça Eleitoral. Razão social e CNPJ vieram da
-// consulta ao registro do comitê (CNPJ aberto em 10/08/2026, natureza
-// jurídica "Candidato a Cargo Político Eletivo"), enviada pelo cliente.
-// Partido e endereço ainda não foram informados — seguem marcados, nunca
-// preenchidos por suposição. Ver a lista de substituição no README.
+// Dizeres exigidos pela Justiça Eleitoral, vindos da consulta ao registro do
+// comitê: CNPJ aberto em 10/08/2026, natureza jurídica "Candidato a Cargo
+// Político Eletivo". O CNPJ é o item que a propaganda na internet precisa
+// carregar, e ele está aqui.
+//
+// `partido` e `endereco` são opcionais: se um dia forem preenchidos, viram
+// linha no rodapé sozinhos. Vazios, simplesmente não existem na página —
+// nada de texto de espera à vista do eleitor.
 
-export const propaganda = {
-  pendente: true,
+export const propaganda: {
+  comite: string;
+  cnpj: string;
+  partido?: string;
+  endereco?: string;
+} = {
   comite: "Eleição 2026 Vanderlei Luxemburgo da Silva Senador",
   cnpj: "68.499.810/0001-78",
-  partido: "[PENDENTE: partido / federação]",
-  endereco: "[PENDENTE: endereço do comitê]",
-} as const;
+};
 
 // ─── 3. ABERTURA ─────────────────────────────────────────────────
 

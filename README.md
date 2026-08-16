@@ -46,22 +46,17 @@ resumido, reescrito ou completado. Duas frases recebem tratamento tipográfico s
 Cargo, número, estado e a chapa completa (Jair Júnior e Daniel Walison) vieram do banner oficial em
 [`assets/BANNER-INICIAL.png`](assets/BANNER-INICIAL.png).
 
-## Pendências antes de publicar
+## Propaganda eleitoral
 
-**Dados de propaganda eleitoral**, exigidos pela Justiça Eleitoral. Razão social e CNPJ já vieram
-da consulta ao registro do comitê enviada pelo cliente:
+O rodapé carrega os dizeres da Justiça Eleitoral, vindos da consulta ao registro do comitê:
 
-- ✅ **Razão social** — Eleição 2026 Vanderlei Luxemburgo da Silva Senador
-- ✅ **CNPJ** — 68.499.810/0001-78 (aberto em 10/08/2026)
-- ⛔ **Partido / federação** — não informado
-- ⛔ **Endereço do comitê** — não informado
+- **Razão social** — Eleição 2026 Vanderlei Luxemburgo da Silva Senador
+- **CNPJ** — 68.499.810/0001-78 (aberto em 10/08/2026, natureza jurídica "Candidato a Cargo
+  Político Eletivo")
 
-Os dois que faltam estão marcados como `[PENDENTE: …]` em `propaganda` no
-[`src/data/site.ts`](src/data/site.ts) e aparecem no rodapé com um aviso amarelo visível, de
-propósito: nada foi preenchido por suposição. O aviso some sozinho quando `propaganda.pendente`
-virar `false`.
-
-Sem esses dois a página **não deve ir ao ar**.
+`partido` e `endereco` existem em `propaganda` ([`src/data/site.ts`](src/data/site.ts)) como campos
+**opcionais**. Preenchidos, viram linha no rodapé sozinhos; vazios, não existem na página. Não há
+texto de espera à vista do eleitor em lugar nenhum.
 
 ## Imagens
 
